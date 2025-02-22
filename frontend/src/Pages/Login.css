@@ -1,0 +1,117 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+body{
+    background-color: white;
+    color:black;
+    font-family:sans-serif;
+}
+#loginmainheading {
+    text-align: center;
+    color:#EFB6C8;
+    font-size:2rem;
+}
+
+#loginmainsection{
+    height:100vh;
+    width:100vw;
+    background-color:#441752;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+}
+#loginmaindiv{
+    margin:1%;
+    padding:2%;
+    border:2px solid #EFB6C8;
+    border-radius:10px;
+    width:25%;
+}
+#loginwelcomediv{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+#welcomeheading{
+   color:white;
+}
+#welcomepara{
+  margin:3%;
+  color:#d9bbe4;
+}
+.loginflexele{
+    color:white;
+    padding:1% 7%;
+    font-size:1.1rem;
+    cursor: pointer;
+}
+.loginflexele.active{
+     background-color:#EFB6C8;
+    border-radius:5px;
+    color:#201523
+}
+#loginflexdiv{
+    display:flex;
+    justify-content: space-around;
+    width:100%;
+    padding:1%;
+    margin:3%;
+    background-color: #8174A0;
+    border-radius:5px;
+}
+form{
+    width:100%;
+}
+.loginformele{
+ display:flex;
+ flex-direction: column;
+ width:100%;
+ margin:4% 0%;
+}
+input::placeholder{
+    color:#d9bbe4;
+}
+#loginemail{
+ padding:3% ;
+ margin:2% 0%;
+ border-radius:5px;
+ color:white;
+ background-color: #8174A0;
+ cursor: pointer;
+}
+#loginpassword{
+ padding:3%;
+ margin:2% 0%;
+ border-radius:5px;
+ color:white;
+ background-color: #8174A0;
+ cursor: pointer;
+}
+label{
+    color:white;
+}
+#loginsubmit{
+    padding:3%;
+    width:100%;
+    border-radius:5px;
+    background-color: #EFB6C8;
+    font-size:1rem;
+}
+#loginsubmit:hover{
+    border:2px solid white
+}
+#loginforgotpassworddiv{
+    display: flex;
+    justify-content: center;
+    margin:2%;
+}
+#loginforgotpassword{
+    color:#EFB6C8;
+    text-decoration: none;
+}
+#loginforgotpassword:hover{
+   color:white;
+}
