@@ -11,12 +11,10 @@ function Dashboard() {
       <nav id="dash-nav">
         <p id="title">NexOptima</p>
         <div className="nav-btns">
-          <ThemeToggle theme={theme} setTheme={setTheme} />
-          <a href="#admin">Admin</a>
-
-          <a href="#manager">Manager </a>
-
-          <a href="#employee">Employee </a>
+            <a href="#admin">Admin</a>
+            <a href="#manager">Manager </a>
+            <a href="#employee">Employee </a>
+          
         </div>
       </nav>
       <div className={`info ${theme === "light" ? "light" : "dark"}`}>
