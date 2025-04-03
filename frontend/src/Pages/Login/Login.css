@@ -1,0 +1,164 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+body{
+    background-color: white;
+    color:black;
+    font-family:sans-serif;
+}
+#loginmainheading {
+    text-align: center;
+    color:#14213d;
+    font-size:2rem;
+    margin-bottom:1vh;
+}
+/* #441752 */
+#loginmainsection{
+    height:100vh;
+    width:100vw;
+    background-color:#e5e5e5;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+#loginmaindiv{
+    margin:1%;
+    padding:2%;
+    border:2px solid #EFB6C8;
+    background-color:#14213d;
+    border: 2px solid white;
+    border-radius:10px;
+    width:30%;
+}
+#loginimagediv{
+    height:50%;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+
+}
+#loginimage{
+    height:60%;
+    border-radius:35px;
+    animation: changediv 4s steps(10000)  infinite;
+    position: relative;
+}
+@keyframes changediv{
+    0%{
+      top:2vh;
+    }
+    25%{
+      top:1vh;
+    }
+    50%{
+       top:0vh;
+    }
+    75%{
+       top:1vh;
+    }
+    100%{
+       top:2vh;
+    }
+}
+#loginwelcomediv{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+#welcomeheading{
+   color:white;
+}
+#welcomepara{
+  margin:3%;
+  color:#d9bbe4;
+}
+.loginflexele{
+    color:white;
+    padding:1% 7%;
+    font-size:1.1rem;
+    cursor: pointer;
+}
+.loginflexele.active{
+     background-color:#fca311;
+    border-radius:5px;
+    color:#14213d;
+}
+#loginflexdiv{
+    display:flex;
+    justify-content: space-around;
+    width:100%;
+    padding:1%;
+    margin:3%;
+    background-color: #8174A0;
+    border-radius:5px;
+}
+form{
+    width:100%;
+}
+.loginformele{
+ display:flex;
+ flex-direction: column;
+ width:100%;
+ margin:4% 0%;
+}
+input::placeholder{
+    color:black;
+}
+#loginemail{
+ padding:3% ;
+ margin:2% 0%;
+ border-radius:5px;
+ color:black;
+ background-color:white;
+ cursor: pointer;
+}
+#loginpassword{
+ padding:3%;
+ margin:2% 0%;
+ border-radius:5px;
+ color:black;
+ background-color:white;
+ cursor: pointer;
+}
+#loginpassworddiv{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#loginpassworddiv input{
+    width:90%;
+}
+#loginpassworddiv img{
+    width:8%;
+}
+#passwordimg{
+    cursor: pointer;
+}
+label{
+    color:white;
+}
+#loginsubmit{
+    padding:3%;
+    width:100%;
+    border-radius:5px;
+    background-color:#fca311;
+    color:white;
+    font-size:1.1rem;
+}
+#loginsubmit:hover{
+    border:2px solid white
+}
+#loginforgotpassworddiv{
+    display: flex;
+    justify-content: center;
+    margin:2%;
+}
+#loginforgotpassword{
+    color:white;
+    text-decoration: none;
+}
+#loginforgotpassword:hover{
+   color:#e5e5e5;
+}
