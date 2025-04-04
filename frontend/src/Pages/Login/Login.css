@@ -162,3 +162,11 @@ label{
 #loginforgotpassword:hover{
    color:#e5e5e5;
 }
+@media (max-width:600px) {
+    #loginmainsection{
+        display:flex;
+        flex-direction: column;
+        justify-content:space-around;
+        align-items: center;
+    }
+}
