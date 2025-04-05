@@ -19,6 +19,14 @@ import Anchor from "../../Components/anchor";
 //Actual Values Must Be Sent In a {} bracis !
 //ClassName Double Dot
 function Login() {
+
+  useEffect(() => {
+    const token = localStorage.getItem("nextoken");
+    if (token) {
+      navigate("/home");
+    }
+  }, [navigate]);
+
   document.title = "NexOptima | Login";
   const [Active, setActive] = useState("Admin");
   function setcurrent(active) {

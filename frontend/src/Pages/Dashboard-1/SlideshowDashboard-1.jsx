@@ -1,6 +1,9 @@
 import React,{useState,useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import './SlideshowDashboard-1.css';
+
+import { ChevronRight } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
 const images = [
   "https://png.pngtree.com/png-clipart/20230427/original/pngtree-productivity-line-icon-png-image_9116967.png",
   "https://png.pngtree.com/png-vector/20220718/ourmid/pngtree-quarantine-office-people-employee-manager-png-image_5913171.png",
@@ -52,7 +55,7 @@ function SlideShow() {
                 slide_prev(index);
               }}
             >
-              Prev
+              <ChevronLeft />
             </button>
             <div id="slideshowimgdiv">
               <img src={img} alt="NO Image" id="slideshowimg"></img>
@@ -63,7 +66,7 @@ function SlideShow() {
                 slide_next(index);
               }}
             >
-              Next
+              <ChevronRight />
             </button>
           </div>
           <div id="slideshowbtndiv">
