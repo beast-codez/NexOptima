@@ -16,6 +16,7 @@ import Input from "../../Components/input";
 import Form from "../../Components/form";
 import Button from "../../Components/button";
 import Anchor from "../../Components/anchor";
+import axios from "axios";
 //Actual Values Must Be Sent In a {} bracis !
 //ClassName Double Dot
 function Login() {
@@ -26,7 +27,21 @@ function Login() {
       navigate("/home");
     }
   }, [navigate]);
-
+  const [user , setUser] =  useState({email : '', password : ''});
+  const handleChange=(e)=>{
+    user[e.target.name]=e.target.value;
+  }
+  const handleSubmit = async()=>{
+    const res = await axios.post('http://localhost:5018/auth/login',{email : user.email,password : user.password , userType : Active});
+    if(!res.data.success){
+      //error
+    }
+    if(res.data.success){
+      //handle success
+      localStorage.setItem('nextoken', res.data.nextoken);
+      navigate("/home");
+    }
+  }
   document.title = "NexOptima | Login";
   const [Active, setActive] = useState("Admin");
   function setcurrent(active) {
@@ -84,15 +99,17 @@ function Login() {
               Employee
             </Div>
           </Div>
-          <Form method="post" action="/Login">
+          <Form onSubmit = {handleSubmit}>
             <Div className="loginformele">
               <Label id="loginemail" text="Email"></Label>
               <Input
                 type="text"
                 id="loginemail"
                 name="email"
+                value = {user.email}
                 placeholder="Enter your email"
                 required="true"
+                onChange = {(e)=>handleChange(e)}
               ></Input>
             </Div>
             <Div className="loginformele">
@@ -102,10 +119,12 @@ function Login() {
                   type={Type}
                   id="loginpassword"
                   name="password"
+                  value = {user.password}
                   placeholder="Enter your password"
                   required={true}
+                  onChange= {(e)=>handleChange(e)}
                 ></Input>
-                <img src={Link} id="passwordimg" onClick={changeType}></img>
+                <img src={Link} id="passwordimg" onClick={changeType}/>
               </Div>
             </Div>
             <Button type="submit" id="loginsubmit">

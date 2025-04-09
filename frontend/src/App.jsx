@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState , useEffect}from "react";
 import Login from "./Pages/Login/Login.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard1 from "./Pages/Dashboard-1/Dashboard-1.jsx";
@@ -7,6 +7,15 @@ import SlideShow from "./Pages/Dashboard-1/SlideshowDashboard-1.jsx";
 import ProtectedRoute from './ProtectedRoute.jsx'
 import Home from './Pages/Home/Home.jsx'
 const App = () => {
+  const [nextoken , setNexToken] = useState('');
+  useEffect(()=>{
+    const getToken= async()=>{
+      const token =  await localStorage.getItem('nextoken');
+      if(token ) setNexToken(token);
+
+    }
+    getToken();
+  })
   return (
     <Router>
       <Routes>
@@ -14,7 +23,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         {/* <Route path="/SlideShow" element={<SlideShow/>}></Route> */}
         <Route element={<ProtectedRoute />}>
-          <Route path="/homr" element={<Home />} />
+          <Route path="/homr" element={<Home token = {nextoken}/>} />
         </Route>
       </Routes>
     </Router>
