@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const images = [
-  "https://png.pngtree.com/png-clipart/20230427/original/pngtree-productivity-line-icon-png-image_9116967.png",
+  "https://www.freeiconspng.com/uploads/dashboard-icon-3.png",
   "https://png.pngtree.com/png-vector/20220718/ourmid/pngtree-quarantine-office-people-employee-manager-png-image_5913171.png",
   "https://www.reactjsindia.com/blog/wp-content/uploads/2023/11/Employee-Management-affilate-page-1536x1038-1.png",
   "https://cdni.iconscout.com/illustration/premium/thumb/admin-lady-managing-online-data-transfer-and-security-illustration-download-in-svg-png-gif-file-formats--business-startup-inforgraphic-graph-ui-pack-illustrations-1782204.png",
@@ -66,7 +66,6 @@ const styles = {
     overflow: "hidden",
     borderRadius: "10px",
     boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
-    margin: "10px",
   },
   imageContainer: {
     width: "100%",
@@ -77,7 +76,6 @@ const styles = {
   },
   image: {
     width: "70%",
-    objectFit: "cover",
     transition: "transform 0.5s ease-in-out",
     objectFit: "contain",
   },

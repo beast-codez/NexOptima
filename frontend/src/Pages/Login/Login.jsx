@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
 import "./Login.css";
 import {
@@ -16,22 +17,31 @@ import Input from "../../Components/input";
 import Form from "../../Components/form";
 import Button from "../../Components/button";
 import Anchor from "../../Components/anchor";
+import { Eye } from "lucide-react";
 //Actual Values Must Be Sent In a {} bracis !
 //ClassName Double Dot
 function Login() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem("nextoken");
+    if (token) {
+      navigate("/home");
+    }
+  }, [navigate]);
+
   document.title = "NexOptima | Login";
   const [Active, setActive] = useState("Admin");
   function setcurrent(active) {
     setActive(active);
   }
   const [Type, setType] = useState("password");
-  const [Link, setLink] = useState("/img/eye (1).svg");
+  const [Link, setLink] = useState("/img/eye.svg");
   function changeType() {
-    if (Link == "/img/eye (1).svg") {
-      setLink("/img/eye-off (1).svg");
+    if (Link == "/img/eye.svg") {
+      setLink("/img/eye-off.svg");
       setType("text");
     } else {
-      setLink("/img/eye (1).svg");
+      setLink("/img/eye.svg");
       setType("password");
     }
   }

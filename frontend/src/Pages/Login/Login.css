@@ -128,13 +128,17 @@ input::placeholder{
     align-items: center;
 }
 #loginpassworddiv input{
-    width:90%;
+    width:95%;
 }
 #loginpassworddiv img{
     width:8%;
 }
 #passwordimg{
     cursor: pointer;
+    background-color: white;
+    height:38px;
+    margin-left:0px;
+    border-radius: 5px;
 }
 label{
     color:white;

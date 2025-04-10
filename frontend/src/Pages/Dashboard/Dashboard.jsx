@@ -1,9 +1,13 @@
 import React from "react";
 import "./Dashboard.css";
 import Carousel from "./Carousel";
+import ThemeToggle from "./ToggleTheme";
+import { useState } from "react";
 function Dashboard() {
+  const [theme, setTheme] = useState("light");
+
   return (
-    <>
+    <div className={`container ${theme === "light" ? "light" : "dark"}`}>
       <nav id="dash-nav">
         <p id="title">NexOptima</p>
         <div className="nav-btns">
@@ -13,7 +17,7 @@ function Dashboard() {
           
         </div>
       </nav>
-      <div className="info">
+      <div className={`info ${theme === "light" ? "light" : "dark"}`}>
         <div className="info-left">
           <div className="type-writer">
             <p id="nex-optima">NexOptima - Productivity Management Platform</p>
@@ -32,7 +36,7 @@ function Dashboard() {
         </div>
         <img src="/img/dash-img1.jpg" alt="loading.." id="info-right" />
       </div>
-      <section id="admin">
+      <section id="admin" className={`${theme === "light" ? "light" : "dark"}`}>
         <div className="info-top">
           <p className="ind-info">
             The Admin is the backbone of NexOptima, responsible for managing the
@@ -46,7 +50,10 @@ function Dashboard() {
         </div>
         <button className="sec-btn">Admin Signin</button>
       </section>
-      <section id="manager">
+      <section
+        id="manager"
+        className={`${theme === "light" ? "light" : "dark"}`}
+      >
         <div className="info-top">
           <p className="ind-info">
             The Manager acts as the bridge between Admin and Employees, taking
@@ -61,8 +68,11 @@ function Dashboard() {
         </div>
         <button className="sec-btn">Manager Signin</button>
       </section>
-      <section id="employee">
-        <div className="info-top">
+      <section
+        id="employee"
+        className={`${theme === "light" ? "light" : "dark"}`}
+      >
+        <div className={`info-top ${theme === "light" ? "light" : "dark"}`}>
           <p className="ind-info">
             The Employee is responsible for executing assigned tasks with
             dedication and efficiency. They log into NexOptima to track their
@@ -79,7 +89,7 @@ function Dashboard() {
       <footer id="footer">
         <p id="footer-content">© 2025 NexOptima. All rights reserved.</p>
       </footer>
-    </>
+    </div>
   );
 }
 

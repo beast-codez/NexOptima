@@ -1,6 +1,6 @@
-import React,{useState,useEffect} from 'react';
-import ReactDOM from 'react-dom';
-import './SlideshowDashboard-1.css';
+import React, { useState, useEffect } from "react";
+import "./SlideshowDashboard-1.css";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 
 const images = [
   "https://png.pngtree.com/png-clipart/20230427/original/pngtree-productivity-line-icon-png-image_9116967.png",
@@ -12,59 +12,62 @@ const images = [
 function SlideShow() {
   const [index, setIndex] = useState(0);
 
-  function current_slide(i) {
+  const slideNext = () => {
+    setIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const slidePrev = () => {
+    setIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
+
+  const currentSlide = (i) => {
     setIndex(i);
-  }
-
-  function slide_next() {
-    setIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
-  }
-
-  function slide_prev() {
-    setIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  }
+  };
 
   useEffect(() => {
-    const interval = setInterval(slide_next, 3000);
-    return () => clearInterval(interval); // Cleanup interval on unmount
+    const interval = setInterval(slideNext, 3000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <section id="slideshowsection">
       <div id="slideshowmain">
         <div id="slideshowmaindiv">
-          <button className="slideshowbtnpn" onClick={slide_prev}>
-            Prev
+          <button className="slideshowbtnpn" onClick={slidePrev}>
+            <ChevronLeft />
           </button>
           <div id="slideshowimgdiv">
-            <img src={images[index]} alt="Slideshow" id="slideshowimg" />
+            <img src={images[index]} alt="Slide" id="slideshowimg" />
           </div>
-          <button className="slideshowbtnpn" onClick={slide_next}>
-            Next
+          <button className="slideshowbtnpn" onClick={slideNext}>
+            <ChevronRight />
           </button>
         </div>
         <div id="slideshowbtndiv">
           {images.map((_, i) => (
-            <button key={i} onClick={() => current_slide(i)
-            }></button>
+            <button
+              key={i}
+              onClick={() => currentSlide(i)}
+              className={index === i ? "active" : ""}
+            ></button>
           ))}
         </div>
       </div>
       <div id="slideshowsidebtn">
-        <h2>Choose Your Role!</h2>
-        <button>
+        <h3>Choose Your Role!</h3>
+        <button onClick={() => { window.location.hash = "#dashboard1admin" }}>
           <img src="/img/admin.png" alt="Admin" />
           Admin
         </button>
-        <button>
+        <button onClick={() => {
+          window.location.hash="#dashboard1manager"
+        }}>
           <img src="/img/manager.png" alt="Manager" />
           Manager
         </button>
-        <button>
+        <button onClick={() => {
+          window.location.hash="#dashboard1employee"
+        }}>
           <img src="/img/employee.png" alt="Employee" />
           Employee
         </button>
@@ -72,9 +75,5 @@ function SlideShow() {
     </section>
   );
 }
-const styles = {
-  hi: {
-    backgroundColor: "black"
-  }
-}
+
 export default SlideShow;
