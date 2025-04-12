@@ -18,19 +18,67 @@ import Form from "../../Components/form";
 import Button from "../../Components/button";
 import Anchor from "../../Components/anchor";
 import { Eye } from "lucide-react";
+import axios from "axios";
+import {jwtDecode} from "jwt-decode";
 //Actual Values Must Be Sent In a {} bracis !
 //ClassName Double Dot
+function get_type() {
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get("type");
+  return type;
+}
+const checkTokenExpiry = (token) => {
+    
+  try {
+    const decoded = jwtDecode(token);
+    const currentTime = Math.floor(Date.now() / 1000); // Current time in seconds
+
+    if (decoded.exp && decoded.exp < currentTime) {
+      console.log("Token has expired");
+      localStorage.removeItem("nextoken");
+      return true; // expired
+    } else {
+      console.log("Token is still valid");
+      return false; // not expired
+    }
+  } catch (err) {
+    console.error("Invalid token:", err);
+    return true; // consider invalid tokens as expired
+  }
+};
 function Login() {
   const navigate = useNavigate();
   useEffect(() => {
     const token = localStorage.getItem("nextoken");
     if (token) {
-      navigate("/home");
+      let isExpired = checkTokenExpiry(token);
+      if (!isExpired) {
+          navigate("/Home");
+      }
     }
   }, [navigate]);
-
+  const [user , setUser] =  useState({email : '', password : ''});
+  const handleChange=(e)=>{
+    user[e.target.name]=e.target.value;
+  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await axios.post('http://localhost:5018/auth/login',{email : user.email,password : user.password , userType : Active});
+    if(!res.data.success){
+      //error
+    }
+    if(res.data.success){
+      //handle success
+      localStorage.setItem('nextoken', res.data.nextoken);
+      navigate("/Home");
+    }
+  }
   document.title = "NexOptima | Login";
-  const [Active, setActive] = useState("Admin");
+  let current_type = get_type();
+  if (current_type == null) {
+    current_type = "Admin";
+  }
+  const [Active, setActive] = useState(current_type);
   function setcurrent(active) {
     setActive(active);
   }
@@ -86,15 +134,17 @@ function Login() {
               Employee
             </Div>
           </Div>
-          <Form method="post" action="/Login">
+          <Form onSubmit = {(e)=> handleSubmit(e)}>
             <Div className="loginformele">
               <Label id="loginemail" text="Email"></Label>
               <Input
                 type="text"
                 id="loginemail"
                 name="email"
+                value = {user.email}
                 placeholder="Enter your email"
                 required="true"
+                onChange = {(e)=>handleChange(e)}
               ></Input>
             </Div>
             <Div className="loginformele">
@@ -104,10 +154,12 @@ function Login() {
                   type={Type}
                   id="loginpassword"
                   name="password"
+                  value = {user.password}
                   placeholder="Enter your password"
                   required={true}
+                  onChange= {(e)=>handleChange(e)}
                 ></Input>
-                <img src={Link} id="passwordimg" onClick={changeType}></img>
+                <img src={Link} id="passwordimg" onClick={changeType}/>
               </Div>
             </Div>
             <Button type="submit" id="loginsubmit">

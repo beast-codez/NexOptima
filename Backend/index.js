@@ -6,7 +6,8 @@ const authRouter = require("./Routers/authRouter");
 
 require('dotenv').config();
 require('./Models/database');
-app.use(bodyParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use('/auth' , authRouter);
 
