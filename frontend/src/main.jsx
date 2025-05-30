@@ -5,11 +5,9 @@ import "./index.css";
 
 const container = document.getElementById("root");
 
-if (!container._reactRootContainer) {
   const root = createRoot(container);
   root.render(
     <React.StrictMode>
       <App />
     </React.StrictMode>
   );
-}

@@ -1,68 +1,324 @@
-*{
-    margin:0;
-    padding:0;
+* {
+  margin: 0;
+  padding: 0;
 }
-body{
-  background-color:#e5e5e5;
-  width:100%;
-  height:100%;
+body {
+  background-color: #e5e5e5;
+  width: 100%;
+  height: 100%;
 }
-#homenavbar{
- display:flex;
- width:100%;
- align-items:center;
- justify-content: space-between;
- background-color:#14213d;
- padding:1rem 2rem;
- color:white;
+#homenavbar {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #14213d;
+  padding: 1rem 2rem;
+  color: white;
 }
-#homenavbardiv1{
-    display:flex;
-    align-items:center;
+#homenavbardiv1 {
+  display: flex;
+  align-items: center;
 }
-#homenavbardiv1 img{
- height:2rem;
- margin-right:1rem;
+#homenavbardiv1 img {
+  height: 2rem;
+  margin-right: 1rem;
 }
-#homesection1 h1{
-  font-size:2rem;
+#homesection1 h1 {
+  font-size: 2rem;
   text-align: center;
-  margin:1.5rem;
+  margin: 1.5rem;
 }
-#homesection1 div{
-    display:flex;
+#homesection1 div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#homesection1 div button {
+  width: 15rem;
+  margin: 2rem;
+  padding: 0.7rem;
+  font-size: 1.2rem;
+  background-color: #886cca;
+  color: white;
+  border-radius: 10px;
+  transition: transform 0.2s linear;
+}
+#homesection1 div button:hover {
+  background-color: #886cca;
+  transform: scale(1.05);
+}
+#homesection1 div #homesection1desc {
+  background-color: #14213d;
+  color: white;
+  padding: 2rem 4rem;
+  margin: 0% 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+#homesection1desc,
+h1,
+p {
+  margin: 2vh;
+}
+#homesection1desc {
+  border-radius: 20px;
+  width: 60rem;
+}
+
+.add-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+}
+.addManager {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #14213d;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  max-width: 90%;
+  margin-left: 10%;
+  margin-right: auto;
+  display: flex;
+  height: 25rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.formfields {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formfields label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: white;
+  display: flex;
+}
+
+.formfields input {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  display: flex;
+  width: 70%;
+  transition: border-color 0.3s;
+}
+
+.formfields input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+#addManagerbtn {
+  padding: 10px 20px;
+  background-color: #886cca;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  font-size: 1rem;
+  width: 80%;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-left: 10%;
+}
+#addManagerbtn:hover {
+  background-color: #007bff;
+  transform: scale(1.05);
+}
+#addManagerForm h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
+.viewBranches {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  background-color: #14213d;
+  margin-top: 30px;
+  margin-left: 3%;
+  border-radius: 10px;
+  height: 25rem;
+}
+.viewBranches h2 {
+  color: white;
+  margin: 20px;
+}
+.branch-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 90%;
+  height: 80%;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.branch-card {
+  background-color: white;
+  color: #14213d;
+  padding : 1px 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.branch-card:hover {
+  transform: scale(1.02);
+}
+.branch-card-head{
+    background-color: #886cca;
+  color: white;
+  padding :  0.1rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #5670a9;
+    display: none;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+}
+.modal-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.open{
+    display: block;
+}
+.modal-top{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+.close{
+    font-size: 3rem;
+    font-weight: bolder;
+    cursor: pointer;
+    color: rgb(131, 14, 14);
+    
+}
+.blurred{
+    filter: blur(10px);
+    pointer-events: none;
+}
+#addBranchbtn{
+    padding: 10px 20px;
+    background-color: #886cca;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    font-size: 1rem;
+    margin-left: 10%;
+    width: 80%;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.searchManager{
+    display: flex;
+    margin-left: 9%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 81%;
+    margin-top: 20px;
+    background-color: #14213d;
+    border-radius: 10px;
+
 }
-#homesection1 div button{
-    width:15rem;
-    margin:2rem;
-    padding:0.7rem;
-    font-size:1.2rem;
-    background-color:#af9fd4;
-    color:white;
-    border-radius:10px;
-    transition: transform 0.2s linear;
+#searchManagerForm{
+  width: 80%;
+  display: flex;
+  align-items: start;
+  justify-content: space-around;
+  
 }
-#homesection1 div button:hover{
-     background-color:#886cca;
-     transform: scale(1.05); 
+#searchManagerForm input{
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 70%;
+  margin-bottom: 10px;
 }
-#homesection1 div #homesection1desc{
- background-color: #14213d;
- color:white;
- padding:2rem 4rem;
- margin:0% 20%;
- display:flex;
- flex-direction: column;
- justify-content:space-around;
- align-items: center;
+#searchManagerForm input:focus {
+  border-color: #007bff;
+  outline: none;
 }
-#homesection1desc,h1,p{
-    margin:2vh;
+#searchManagerForm button {
+  padding: 10px 20px;
+  background-color: #886cca;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  font-size: 1rem;
+  align-self: center;
+  margin-top: -30px;
+  width: 10rem;
+  transition: background-color 0.3s, transform 0.2s;
 }
-#homesection1desc{
-    border-radius:20px;
-    width:60rem;
+.searchManager h2{
+  color: white;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.formfields label{ 
+    color: #886cca;
+    font-weight: 600;
+}
+.search-results{
+  color : white;
+}
+.searchOptions{
+  display : flex;
+  justify-content:space-between;
+  align-items : center;
+}
+.close-results{
+  height : 2rem;
+  width : 2rem;
+  background-color : transparent;
+  color : red;
+  font-size : 1.4rem;
+  font-weight : 600
 }
